@@ -1,15 +1,5 @@
 @import-normalize;
 
-:root {
-  --color-white: #ffffff;
-  --color-black: #010101;
-  --color-green: #4caf50;
-  --color-red: #f44336;
-  --color-blue: #2196f3;
-  --color-primary-text: #212121;
-  --color-secondary-text: #757575;
-}
-
 * {
   box-sizing: border-box;
 }
@@ -22,7 +12,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: var(--color-primary-text);
+  color: #212121;
   line-height: 1.5;
   background-color: #fafafa;
   scroll-behavior: smooth;

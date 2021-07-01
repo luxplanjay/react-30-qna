@@ -1,9 +1,9 @@
-import { Event } from '../Event/Event';
-import css from './EventBoard.module.css';
+import { Event } from 'components/Event/Event';
+import { Container } from './EventBoard.styled';
 
 export const EventBoard = ({ events }) => {
   return (
-    <div className={css.eventBoard}>
+    <Container>
       {events.map(event => (
         <Event
           key={event.name}
@@ -15,6 +15,6 @@ export const EventBoard = ({ events }) => {
           type={event.type}
         />
       ))}
-    </div>
+    </Container>
   );
 };
