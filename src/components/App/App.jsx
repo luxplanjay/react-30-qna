@@ -1,42 +1,69 @@
 import { Component } from 'react';
-import styled from '@emotion/styled/macro';
-// import { PageTitle } from 'components/PageTitle/PageTitle';
-// import { EventBoard } from 'components/EventBoard/EventBoard';
-// import upcomingEvents from 'mock-data/upcoming-events.json';
-import { VideoList } from 'components/VideoList/VideoList';
-import { VimeoPlayer } from 'components/VimeoPlayer/VimeoPlayer';
-import videos from 'mock-data/videos.json';
-
-const AppContainer = styled.div`
-  display: grid;
-  grid-template-columns: 1fr max-content;
-  gap: 24px;
-`;
+import { FaAtlassian } from 'react-icons/fa';
+import toast, { Toaster } from 'react-hot-toast';
 
 export class App extends Component {
   state = {
-    selectedVideo: null,
+    openedModal: 'none',
+    page: 1,
+    todos: [],
   };
 
-  selectVideo = link => {
-    this.setState({
-      selectedVideo: link,
-    });
-  };
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.page !== this.state.page) {
+      fetch('https://jsonplaceholder.typicode.com/todos')
+        .then(response => response.json())
+        .then(data => this.setState({ todos: data }));
+    }
+  }
+
+  openModal = type => this.setState({ openedModal: type });
+  closeModal = () => this.setState({ openedModal: 'none' });
 
   render() {
-    const { selectedVideo } = this.state;
+    const { openedModal } = this.state;
     return (
-      <AppContainer>
-        {/* <PageTitle>24th Core Worlds Coalition Conference</PageTitle> */}
-        {/* <EventBoard events={upcomingEvents} /> */}
-        <VimeoPlayer url={selectedVideo} />
-        <VideoList
-          videos={videos}
-          selectedVideo={selectedVideo}
-          onSelect={this.selectVideo}
-        />
-      </AppContainer>
+      <div>
+        {/* MODALS */}
+        <button onClick={() => this.openModal('edit')}>Edit</button>
+        <button onClick={() => this.openModal('delete')}>Delete</button>
+        <button onClick={() => this.openModal('create')}>Create</button>
+
+        {openedModal === 'edit' && (
+          <div>
+            Edit modal <button onClick={this.closeModal}>Close</button>
+          </div>
+        )}
+        {openedModal === 'delete' && (
+          <div>
+            Delete modal <button onClick={this.closeModal}>Close</button>
+          </div>
+        )}
+        {openedModal === 'create' && (
+          <div>
+            Create modal <button onClick={this.closeModal}>Close</button>
+          </div>
+        )}
+        {/* TODOS */}
+        <button onClick={() => this.setState(p => ({ page: p + 1 }))}>
+          Load more
+        </button>
+        {this.state.todos.map(t => (
+          <div>{t.title}</div>
+        ))}
+
+        {/* TOAST */}
+        <button
+          onClick={() =>
+            toast('Here is your toast.', {
+              icon: <FaAtlassian color="blue" />,
+            })
+          }
+        >
+          TOAST
+        </button>
+        <Toaster position="top-right" />
+      </div>
     );
   }
 }

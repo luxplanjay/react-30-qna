@@ -19,7 +19,7 @@ const theme = {
 ReactDOM.render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
-      <App />
+      <App x={5} />
     </ThemeProvider>
   </React.StrictMode>,
   document.getElementById('root'),
