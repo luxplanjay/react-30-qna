@@ -5,7 +5,7 @@ export const SearchBox = ({ onSearch }) => {
     <div>
       <DebounceInput
         autoComplete="off"
-        minLength={2}
+        minLength={1}
         debounceTimeout={300}
         onChange={e => onSearch(e.target.value)}
       />
