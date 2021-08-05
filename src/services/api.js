@@ -1,9 +1,2 @@
-import axios from 'axios';
-
-axios.defaults.baseURL = 'https://restcountries.eu/rest/v2';
-
-export const fetchCountries = async countryName => {
-  const params = 'fields=name;capital;population;flag;languages';
-  const response = await axios.get(`/name/${countryName}?${params}`);
-  return response.data;
-};
+// https://pixabay.com/api/
+// const apiKey = '4823621-792051e21e56534e6ae2e472f';

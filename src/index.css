@@ -6,7 +6,7 @@
 
 body {
   min-height: 100vh;
-  margin: 0;
+  margin: 16px;
   font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;

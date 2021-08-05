@@ -1,25 +1,17 @@
 import { Toaster } from 'react-hot-toast';
-import { Switch, Route, Link } from 'react-router-dom';
-import { CountriesPage } from 'pages/Countries';
-import { PostsPage } from 'pages/Posts';
+import { Switch, Route } from 'react-router-dom';
+import { HomePage } from 'pages/Home';
+import { UsersPage } from 'pages/Users';
 
 export const App = () => {
   return (
     <div>
-      <ul>
-        <li>
-          <Link to="/countries">Страны</Link>
-        </li>
-        <li>
-          <Link to="/posts">Посты</Link>
-        </li>
-      </ul>
       <Switch>
-        <Route path="/countries">
-          <CountriesPage />
+        <Route path="/" exact>
+          <HomePage />
         </Route>
-        <Route path="/posts">
-          <PostsPage />
+        <Route path="/users">
+          <UsersPage />
         </Route>
       </Switch>
       <Toaster position="top-right" />
