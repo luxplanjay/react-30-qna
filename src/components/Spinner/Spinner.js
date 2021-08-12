@@ -13,5 +13,9 @@ const spin = keyframes`
 `;
 
 export const Spinner = styled(CgSpinner)`
-  animation: ${spin} 1s linear infinite;
+  animation: ${spin} 0.85s linear infinite;
 `;
+
+Spinner.defaultProps = {
+  size: 40,
+};
